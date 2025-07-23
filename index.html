@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReadSphere - Modern Digital Library</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><i class="fas fa-globe"></i> ReadSphere</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#library" class="nav-link">Library</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#audiobooks" class="nav-link">AudioBooks</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+            </ul>
+            <div class="nav-auth">
+                <button class="btn btn-outline" onclick="showLogin()">Login</button>
+                <button class="btn btn-primary" onclick="showRegister()">Sign Up</button>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to the Future of<br><span class="highlight">Digital Reading</span></h1>
+            <p class="hero-subtitle">Experience literature like never before with our immersive platform featuring cutting-edge technology and seamless user experience.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary glass-btn" onclick="showRegister()">
+                    <i class="fas fa-rocket"></i> Start Journey
+                </button>
+                <button class="btn btn-secondary glass-btn" onclick="document.getElementById('library').scrollIntoView()">
+                    <i class="fas fa-compass"></i> Explore Library
+                </button>
+            </div>
+        </div>
+        <div class="hero-stats glass-container">
+            <div class="stat glass-card">
+                <h3>10,000+</h3>
+                <p>Books Available</p>
+                <i class="fas fa-book stat-icon"></i>
+            </div>
+            <div class="stat glass-card">
+                <h3>5,000+</h3>
+                <p>AudioBooks</p>
+                <i class="fas fa-headphones stat-icon"></i>
+            </div>
+            <div class="stat glass-card">
+                <h3>50,000+</h3>
+                <p>Happy Readers</p>
+                <i class="fas fa-users stat-icon"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Books -->
+    <section id="library" class="library">
+        <div class="section-bg-pattern"></div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Collection</h2>
+                <p class="section-subtitle">Curated selection of trending and timeless literature</p>
+            </div>
+            <div class="book-categories glass-container">
+                <button class="category-btn glass-btn active" data-category="all">
+                    <i class="fas fa-th"></i> All Books
+                </button>
+                <button class="category-btn glass-btn" data-category="fiction">
+                    <i class="fas fa-magic"></i> Fiction
+                </button>
+                <button class="category-btn glass-btn" data-category="non-fiction">
+                    <i class="fas fa-lightbulb"></i> Non-Fiction
+                </button>
+                <button class="category-btn glass-btn" data-category="mystery">
+                    <i class="fas fa-search"></i> Mystery
+                </button>
+                <button class="category-btn glass-btn" data-category="romance">
+                    <i class="fas fa-heart"></i> Romance
+                </button>
+            </div>
+            <div class="books-grid" id="booksGrid">
+                <!-- Books will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- AudioBooks Section -->
+    <section id="audiobooks" class="audiobooks">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Audio Experience</h2>
+                <p class="section-subtitle">Immerse yourself in professionally narrated stories</p>
+            </div>
+            <div class="audiobooks-grid" id="audiobooksGrid">
+                <!-- AudioBooks will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">About ReadSphere</h2>
+                    <p>ReadSphere revolutionizes digital reading with cutting-edge technology and intuitive design. Our platform combines the joy of traditional reading with modern innovation.</p>
+                    <div class="features glass-container">
+                        <div class="feature glass-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h4>Vast Library</h4>
+                            <p>Unlimited access to premium content</p>
+                        </div>
+                        <div class="feature glass-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <h4>High-Quality Audio</h4>
+                            <p>Crystal clear professional narrations</p>
+                        </div>
+                        <div class="feature glass-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-sync"></i>
+                            </div>
+                            <h4>Multi-Device Sync</h4>
+                            <p>Seamless experience across all platforms</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-container glass-card">
+                        <img src="https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Reading experience">
+                        <div class="image-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content glass-modal">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <div class="modal-header">
+                <i class="fas fa-sign-in-alt modal-icon"></i>
+                <h2>Welcome Back</h2>
+                <p>Sign in to continue your reading journey</p>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <div class="input-container">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input type="email" id="loginEmail" name="email" required placeholder="Enter your email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <div class="input-container">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="loginPassword" name="password" required placeholder="Enter your password">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary glass-btn full-width">
+                    <i class="fas fa-sign-in-alt"></i> Sign In
+                </button>
+                <p class="auth-switch">Don't have an account? <a href="#" onclick="switchToRegister()">Sign up</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content glass-modal">
+            <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            <div class="modal-header">
+                <i class="fas fa-user-plus modal-icon"></i>
+                <h2>Join ReadSphere</h2>
+                <p>Create your account and start exploring</p>
+            </div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Full Name</label>
+                    <div class="input-container">
+                        <i class="fas fa-user input-icon"></i>
+                        <input type="text" id="registerName" name="name" required placeholder="Enter your full name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <div class="input-container">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input type="email" id="registerEmail" name="email" required placeholder="Enter your email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <div class="input-container">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="registerPassword" name="password" required placeholder="Create a password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="input-container">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary glass-btn full-width">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </button>
+                <p class="auth-switch">Already have an account? <a href="#" onclick="switchToLogin()">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Book Reader Modal -->
+    <div id="readerModal" class="modal reader-modal">
+        <div class="reader-content">
+            <div class="reader-header">
+                <h3 id="readerTitle">Book Title</h3>
+                <div class="reader-controls">
+                    <button class="btn btn-outline" onclick="adjustFontSize(-1)"><i class="fas fa-minus"></i></button>
+                    <button class="btn btn-outline" onclick="adjustFontSize(1)"><i class="fas fa-plus"></i></button>
+                    <button class="btn btn-outline" onclick="toggleTheme()"><i class="fas fa-adjust"></i></button>
+                    <button class="btn btn-outline" onclick="closeModal('readerModal')"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <div class="reader-body" id="readerBody">
+                <!-- Book content will be loaded here -->
+            </div>
+            <div class="reader-footer">
+                <button class="btn btn-outline" onclick="previousPage()"><i class="fas fa-chevron-left"></i> Previous</button>
+                <span id="pageInfo">Page 1 of 10</span>
+                <button class="btn btn-outline" onclick="nextPage()">Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Player Modal -->
+    <div id="audioPlayerModal" class="modal audio-modal">
+        <div class="audio-content">
+            <div class="audio-header">
+                <img id="audioBookCover" src="" alt="Book Cover" class="audio-cover">
+                <div class="audio-info">
+                    <h3 id="audioBookTitle">AudioBook Title</h3>
+                    <p id="audioBookAuthor">Author Name</p>
+                </div>
+                <button class="btn btn-outline" onclick="closeModal('audioPlayerModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="audio-player">
+                <audio id="audioPlayer" controls>
+                    <source src="" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <div class="audio-controls">
+                    <button class="control-btn" onclick="skipBackward()"><i class="fas fa-backward"></i></button>
+                    <button class="control-btn play-pause" onclick="togglePlayPause()"><i class="fas fa-play"></i></button>
+                    <button class="control-btn" onclick="skipForward()"><i class="fas fa-forward"></i></button>
+                </div>
+                <div class="audio-progress">
+                    <span id="currentTime">0:00</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <span id="totalTime">0:00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-globe"></i> ReadSphere</h3>
+                    <p>Revolutionizing digital reading with cutting-edge technology and seamless user experience.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#library">Library</a></li>
+                        <li><a href="#audiobooks">AudioBooks</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ReadSphere. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+
+</body>
+</html>
