@@ -358,25 +358,26 @@ function generateStars(rating) {
 
 // AudioBook loading
 function loadAudiobooks() {
-    audiobooksGrid.innerHTML = sampleAudiobooks.map(audiobook => `
-        <div class="audiobook-card" onclick="openAudiobook(${audiobook.id})">
-            <img src="${audiobook.cover}" alt="${audiobook.title}" class="audiobook-cover">
-            <div class="audiobook-info">
-                <h3 class="audiobook-title">${audiobook.title}</h3>
-                <p class="audiobook-author">by ${audiobook.author}</p>
-                <p class="audiobook-duration"><i class="fas fa-clock"></i> ${audiobook.duration}</p>
-                <div class="book-actions">
-                    <button class="btn btn-primary btn-small glass-btn" onclick="event.stopPropagation(); openAudiobook(${audiobook.id})">
-                        <i class="fas fa-play"></i> Listen
-                    </button>
-                    <button class="btn btn-outline btn-small glass-btn" onclick="event.stopPropagation(); addToLibrary(${audiobook.id}, 'audiobook')">
-                        <i class="fas fa-plus"></i> Library
-                    </button>
-                </div>
-            </div>
-        </div>
-    `).join('');
+  const container = document.getElementById('audiobooksGrid') || document.querySelector('.audiobook-card-stack');
+  container.innerHTML = sampleAudiobooks.map(audiobook => `
+    <div class="frosted-card" data-audio-url="${audiobook.audioUrl}" tabindex="0" role="button">
+      <img class="audiobook-art" src="${audiobook.cover}" alt="Cover of ${audiobook.title}" />
+      <div class="waveform-visualizer" aria-hidden="true"></div>
+      <div class="audio-controls" role="group" aria-label="Audio controls for ${audiobook.title}">
+        <button class="control-btn skip-back" title="Skip Backward">⏮️</button>
+        <button class="control-btn play" aria-pressed="false" title="Play">▶️</button>
+        <button class="control-btn skip" title="Skip Forward">⏭️</button>
+      </div>
+      <div class="audiobook-info">
+        <h3 class="audiobook-title">${audiobook.title}</h3>
+        <p class="audiobook-author">by ${audiobook.author}</p>
+        <span class="audiobook-duration">${audiobook.duration}</span>
+      </div>
+    </div>
+  `).join('');
 }
+
+
 
 // Book reader functions
 async function openBook(bookId) {
@@ -742,4 +743,81 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.audiobook-card').forEach((card, index) => {
         card.style.transitionDelay = `${index * 0.1}s`;
     });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const audiobookCards = document.querySelectorAll('.frosted-card');
+  let currentAudio = null;
+  let currentPlayButton = null;
+
+  audiobookCards.forEach(card => {
+    // Create audio element for each card
+    const audioUrl = card.dataset.audioUrl;
+    if(!audioUrl) return; // Skip if no audioUrl
+    
+    const audio = new Audio(audioUrl);
+    audio.preload = 'metadata';
+    card.audioElement = audio;
+
+    // Find buttons
+    const playBtn = card.querySelector('.control-btn.play');
+    const skipBtn = card.querySelector('.control-btn.skip');
+    const skipBackBtn = card.querySelector('.control-btn.skip-back');
+
+    // Play/Pause toggle
+    playBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (audio.paused) {
+        if (currentAudio && currentAudio !== audio) {
+          currentAudio.pause();
+          if (currentPlayButton) {
+            currentPlayButton.innerHTML = '▶️';
+            currentPlayButton.setAttribute('aria-pressed', 'false');
+          }
+        }
+        audio.play();
+        playBtn.innerHTML = '⏸️';
+        playBtn.setAttribute('aria-pressed', 'true');
+        currentAudio = audio;
+        currentPlayButton = playBtn;
+      } else {
+        audio.pause();
+        playBtn.innerHTML = '▶️';
+        playBtn.setAttribute('aria-pressed', 'false');
+        currentAudio = null;
+        currentPlayButton = null;
+      }
+    });
+
+    // Skip forward 15 seconds
+    skipBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!audio.paused) {
+        audio.currentTime = Math.min(audio.currentTime + 15, audio.duration);
+      }
+    });
+
+    // *** New: Skip backward 15 seconds ***
+    if (skipBackBtn) {
+      skipBackBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (!audio.paused) {
+          audio.currentTime = Math.max(audio.currentTime - 15, 0);
+        }
+      });
+    }
+
+    // When audio ends, reset play button
+    audio.addEventListener('ended', () => {
+      playBtn.innerHTML = '▶️';
+      playBtn.setAttribute('aria-pressed', 'false');
+      currentAudio = null;
+      currentPlayButton = null;
+    });
+
+    // Clicking the card toggles play/pause
+    card.addEventListener('click', () => {
+      playBtn.click();
+    });
+  });
 });

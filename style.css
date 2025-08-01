@@ -6,51 +6,58 @@
 }
 
 :root {
-    /* Modern Color Palette */
-    --primary-color: #667eea;
-    --primary-dark: #5a67d8;
-    --secondary-color: #764ba2;
-    --accent-color: #f093fb;
-    --success-color: #48bb78;
-    --warning-color: #ed8936;
-    --error-color: #f56565;
-    
-    /* Neutral Colors */
-    --neutral-50: #f9fafb;
-    --neutral-100: #f3f4f6;
-    --neutral-200: #e5e7eb;
-    --neutral-300: #d1d5db;
-    --neutral-400: #9ca3af;
-    --neutral-500: #6b7280;
-    --neutral-600: #4b5563;
-    --neutral-700: #374151;
-    --neutral-800: #1f2937;
-    --neutral-900: #111827;
-    
-    /* Glass Colors */
-    --glass-bg: rgba(255, 255, 255, 0.1);
-    --glass-border: rgba(255, 255, 255, 0.2);
-    --glass-shadow: rgba(0, 0, 0, 0.1);
-    
-    /* Typography */
-    --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --border-radius: 20px;
-    --border-radius-sm: 12px;
-    --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+  /* Modern Dark Color Palette */
+  --primary-color: #222946;
+  --primary-dark: #16192a;
+  --secondary-color: #393a56;
+  --accent-color: #ff53a1;
+  --success-color: #2fe09b;
+  --warning-color: #ffb761;
+  --error-color: #ff5d73;
+
+  /* Neutral Colors for Dark UI */
+  --neutral-50: #262638;
+  --neutral-100: #1a1b28;
+  --neutral-200: #262638;
+  --neutral-300: #34354a;
+  --neutral-400: #52536e;
+  --neutral-500: #6a6b81;
+  --neutral-600: #8d8fa5;
+  --neutral-700: #b3b4c5;
+  --neutral-800: #dedff6;
+  --neutral-900: #ffffff;
+
+  /* Glass Colors */
+  --glass-bg: rgba(40, 44, 70, 0.6);  /* deep blue overlay */
+  --glass-border: rgba(255,255,255,0.08);
+  --glass-shadow: rgba(0,0,0,0.5);
+
+  --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --border-radius: 20px;
+  --border-radius-sm: 12px;
+  --shadow: 0 8px 32px rgba(0,0,0,0.5);
+  --shadow-lg: 0 20px 40px rgba(0,0,0,0.8);
 }
+
 
 body {
     font-family: var(--font-family);
     line-height: 1.6;
-    color: var(--neutral-800);
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #16192a 0%, #222946 100%);
+    color: var(--neutral-800);    
     min-height: 100vh;
     overflow-x: hidden;
 }
 html {
     scroll-padding-top: 80px;
+}
+.audiobooks-modern,
+.library,
+.about,
+.footer {
+  background: linear-gradient(135deg, #16192a 0%, #222946 100%);
+  color: var(--neutral-800);
 }
 
 /* Glass Morphism Components */
@@ -61,13 +68,15 @@ html {
     border: 1px solid var(--glass-border);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
+    
 }
 
 .glass-card {
-    background: rgba(255, 255, 255, 0.15);
+background: var(--glass-bg);
     backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(20px);
+     border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
     border-radius: var(--border-radius-sm);
     transition: var(--transition);
 }
@@ -85,6 +94,7 @@ html {
     border: 1px solid var(--glass-border);
     color: white;
     transition: var(--transition);
+    box-shadow: var(--shadow);
 }
 
 .glass-btn:hover {
@@ -112,6 +122,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 16px;
+    color: var(--neutral-900);
 }
 
 h1 { font-size: 3.5rem; }
@@ -125,14 +136,24 @@ h4 { font-size: 1.5rem; }
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-align: center;
+    color: var(--neutral-900);
     font-size: 3rem;
     font-weight: 800;
     margin-bottom: 16px;
 }
 
+.section-title,
+h1, h2, h3, h4 {
+   background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+   background-clip: text;
+}
+
+
 .section-subtitle {
     text-align: center;
-    color: var(--neutral-600);
+    color: var(--neutral-900);
     font-size: 1.2rem;
     font-weight: 400;
     max-width: 600px;
@@ -185,7 +206,7 @@ h4 { font-size: 1.5rem; }
 
 .btn-outline {
     background: transparent;
-    color: var(--primary-color);
+    color: var(--neutral-800);
     border: 2px solid var(--primary-color);
 }
 
@@ -196,37 +217,36 @@ h4 { font-size: 1.5rem; }
 
 /* Navigation */
 .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    z-index: 1000;
-    transition: var(--transition);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(90deg, #a18cd1 0%, #fbc2eb 100%); /* Modern gradient */
+  backdrop-filter: blur(18px);
+  box-shadow: 0 5px 24px 0 rgba(162, 140, 209, 0.08);
+  border-bottom: 1.5px solid rgba(255,255,255,0.13);
+  z-index: 1000;
+  transition: all .3s cubic-bezier(.7,0,.3,1);
+  border-radius: 0 0 18px 18px;
 }
 
 .nav-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 80px;
-    box-sizing: border-box;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .nav-logo h2 {
-    color: white;
-    font-size: 1.8rem;
-    font-weight: 800;
-    margin: 0;
-    background: linear-gradient(135deg, #fff, #f093fb);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  font-size: 2.1rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #222946 55%, #a18cd1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
 }
 
 .nav-logo i {
@@ -236,13 +256,13 @@ h4 { font-size: 1.5rem; }
 }
 
 .nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 32px;
+  display: flex;
+  list-style: none;
+  gap: 28px;
 }
 
 .nav-link {
-    color: white;
+    color: var(--neutral-900);
     text-decoration: none;
     font-weight: 500;
     transition: var(--transition);
@@ -401,7 +421,7 @@ h4 { font-size: 1.5rem; }
 
 .stat p {
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: #aaa;
     margin: 0;
     font-weight: 500;
 }
@@ -449,7 +469,6 @@ h4 { font-size: 1.5rem; }
 /* Library Section */
 .library {
     padding: 100px 0;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     position: relative;
 }
 
@@ -466,7 +485,6 @@ h4 { font-size: 1.5rem; }
 
 .category-btn {
     padding: 10px 20px;
-    background: rgba(255, 255, 255, 0.7);
     border: 1px solid rgba(102, 126, 234, 0.2);
     border-radius: var(--border-radius-sm);
     cursor: pointer;
@@ -500,7 +518,8 @@ h4 { font-size: 1.5rem; }
 }
 
 .book-card {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(40,44,70,0.85);
+    color: var(--neutral-800);    
     backdrop-filter: blur(20px);
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -538,13 +557,14 @@ h4 { font-size: 1.5rem; }
 }
 
 .book-author {
-    color: var(--neutral-600);
+    color: #aaa;
     margin-bottom: 12px;
     font-weight: 500;
 }
 
 .book-rating {
     display: flex;
+    color: #aaa;
     align-items: center;
     gap: 8px;
     margin-bottom: 20px;
@@ -573,86 +593,322 @@ h4 { font-size: 1.5rem; }
 }
 
 /* AudioBooks Section */
-.audiobooks {
-    padding: 100px 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+/* Audio Section - Frosted Card Stack Design */
+
+.audiobooks-modern {
+  padding: 80px 20px;
+  font-family: var(--font-family);
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
-.audiobooks .section-title {
-    color: white;
-    -webkit-text-fill-color: white;
+.audiobooks-modern .section-title {
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+  background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.audiobooks .section-subtitle {
-    color: rgba(255, 255, 255, 0.8);
+.audiobook-card-stack {
+  display: flex;
+  gap: 24px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  scroll-behavior: smooth;
 }
 
-.audiobooks-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 24px;
-    width: 100%;
-    box-sizing: border-box;
+.frosted-card {
+  flex: 0 0 280px;
+background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--border-radius);
+border: 1px solid var(--glass-border);
+box-shadow: var(--shadow);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
-.audiobook-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    transition: var(--transition);
-    cursor: pointer;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+.frosted-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(118, 75, 162, 0.6);
 }
 
-.audiobook-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    background: rgba(255, 255, 255, 0.15);
+.audiobook-art {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  transition: transform 0.3s ease;
 }
 
-.audiobook-cover {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
+.frosted-card:hover .audiobook-art {
+  transform: scale(1.05);
+}
+
+/* Circular audio visualizer ring */
+.waveform-visualizer {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+  animation: pulse-ring 2s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.85);
+    opacity: 0.7;
+  }
+}
+
+.audio-controls {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px 0;
+  z-index: 3;
+  position: relative;
+}
+
+.control-btn {
+  background: linear-gradient(135deg, #ff72aa, #745fff); /* Vibrant accent colors */
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  color: #fff;
+  font-size: 24px; /* Larger, clearer icons */
+  box-shadow: 0 8px 24px rgba(255, 83, 161, 0.3); /* Pinkish shadow for accent */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.control-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 8px 28px rgba(171, 127, 207, 0.9);
 }
 
 .audiobook-info {
-    padding: 24px;
+  padding: 0 24px 24px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
 .audiobook-title {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 8px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: white;
 }
 
 .audiobook-author {
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 8px;
-    font-weight: 500;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .audiobook-duration {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
 .audiobook-duration i {
-    color: var(--accent-color);
+  color: #fbc2eb;
+}
+.control-btn.skip-back { 
+    margin-right: 8px;
+}
+
+/* Horizontal scrollbar styling for the card stack */
+.audiobook-card-stack::-webkit-scrollbar {
+  height: 10px;
+}
+
+.audiobook-card-stack::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+  border-radius: 10px;
+}
+
+.audiobook-card-stack::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.audio-modal .modal-content {
+    background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+    width: 90%;
+    max-width: 600px;
+    padding: 0;
+}
+
+.audio-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 30px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: rgb(255, 228, 228);
+}
+
+.audio-cover {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--border-radius-sm);
+    object-fit: cover;
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+
+.audio-info {
+    flex: 1;
+}
+
+.audio-info h3 {
+    margin-bottom: 8px;
+    color: white;
+    font-weight: 700;
+}
+
+.audio-info p {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+.audio-player {
+    background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+    padding: 40px;
+   
+}
+
+.audio-player audio {
+    width: 100%;
+    margin-bottom: 30px;
+    border-radius: var(--border-radius-sm);
+}
+
+.audio-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.control-btn {
+        background: var(--glass-bg);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(23, 27, 47, 0.4);
+}
+
+.control-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.play-pause {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+}
+
+.audio-progress {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 8px;
+    background: var(--neutral-200);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    width: 0%;
+    transition: width 0.1s ease;
+    border-radius: 4px;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .audiobook-card-stack {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+  }
+
+  .frosted-card {
+    flex: 0 0 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .audiobooks-modern {
+    padding: 40px 12px;
+  }
+
+  .audiobook-title {
+    font-size: 1.2rem;
+  }
+
+  .audiobook-author {
+    font-size: 0.9rem;
+  }
 }
 
 /* About Section */
 .about {
     padding: 100px 0;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     position: relative;
 }
 
@@ -989,116 +1245,9 @@ h4 { font-size: 1.5rem; }
 }
 
 /* Audio Player Modal */
-.audio-modal .modal-content {
-    width: 90%;
-    max-width: 600px;
-    padding: 0;
-}
-
-.audio-header {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    padding: 30px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-}
-
-.audio-cover {
-    width: 80px;
-    height: 80px;
-    border-radius: var(--border-radius-sm);
-    object-fit: cover;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-.audio-info {
-    flex: 1;
-}
-
-.audio-info h3 {
-    margin-bottom: 8px;
-    color: white;
-    font-weight: 700;
-}
-
-.audio-info p {
-    color: rgba(255, 255, 255, 0.8);
-    margin: 0;
-}
-
-.audio-player {
-    padding: 40px;
-    background: white;
-}
-
-.audio-player audio {
-    width: 100%;
-    margin-bottom: 30px;
-    border-radius: var(--border-radius-sm);
-}
-
-.audio-controls {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 30px;
-}
-
-.control-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: none;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-}
-
-.control-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-}
-
-.play-pause {
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-}
-
-.audio-progress {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.progress-bar {
-    flex: 1;
-    height: 8px;
-    background: var(--neutral-200);
-    border-radius: 4px;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.progress-fill {
-    height: 100%;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    width: 0%;
-    transition: width 0.1s ease;
-    border-radius: 4px;
-}
 
 /* Footer */
 .footer {
-    background: linear-gradient(135deg, var(--neutral-900), var(--neutral-800));
-    color: white;
     padding: 80px 0 30px;
     position: relative;
 }
@@ -1131,7 +1280,6 @@ h4 { font-size: 1.5rem; }
 
 .footer-section h3 i {
     color: var(--accent-color);
-    margin-right: 8px;
     filter: drop-shadow(0 0 10px rgba(240, 147, 251, 0.3));
 }
 
