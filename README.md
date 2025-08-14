@@ -36,3 +36,34 @@ When you visit BookSphere:
    ```bash
    git clone https://github.com/steveabrahammathew/booksphere.git
    cd booksphere
+   
+2. **Preview Live Version**  
+   Visit the hosted version: [https://steveabrahammathew.github.io/booksphere/](https://steveabrahammathew.github.io/booksphere/)  
+
+3. **Open Locally**  
+   Open the `index.html` file in your browser to run the project locally.  
+
+4. **Make Changes**  
+   Edit HTML, CSS, or JavaScript files in your preferred code editor, then refresh your browser to see changes.  
+
+5. **Deploy**  
+   Push updates to GitHub — if GitHub Pages is enabled on the `main` branch, your changes will go live automatically.
+
+## ⚙️ Tech Stack & Tools
+
+- **HTML5, CSS3, JavaScript**  
+- Responsive layout for mobile and desktop  
+- Lightweight audio playback for smooth listening  
+- User authentication and account handling (if implemented)  
+- Deployed via GitHub Pages
+
+## 🤝 Connect & Contribute
+
+Have ideas, suggestions, or spot an issue?  
+Open an issue or submit a pull request — happy to collaborate!
+
+---
+
+*Made with love for readers and book lovers everywhere.*  
+— **Steve Abraham Mathew**
+
